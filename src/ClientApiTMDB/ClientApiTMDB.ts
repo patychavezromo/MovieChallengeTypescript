@@ -6,7 +6,10 @@ type MoviePage = {
 type Movie = {
     title: string
     poster_path: string
+    id: number
 }
+
+
 
 async function getMoviePage(){
 
@@ -17,3 +20,11 @@ async function getMoviePage(){
 }
 
 export default getMoviePage;
+
+
+export async function getMovie({ number: id}:{number:number}){
+    //https://api.themoviedb.org/3/movie/1011985
+    const movie= await fetch('https://api.themoviedb.org/3/movie/'+ id)
+    const movieJson= await movie.json() as MoviePage;
+    return movieJson;
+}

@@ -9,6 +9,7 @@ import getMovies from './ClientApiTMDB/ClientApiTMDB.ts'
 type Movie={
   title: string
   poster_path: string
+  id: number
 }
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
   },[])
 
   const allMovies= page.map((movie)=>{
-    return <img src={'https://image.tmdb.org/t/p/w200/'+movie.poster_path} alt='posterMovie'/>
+    return <img key={'movie_'+movie.id} src={'https://image.tmdb.org/t/p/w200/'+movie.poster_path} alt='posterMovie'/>
   })
   
   console.log('patypage',page)
